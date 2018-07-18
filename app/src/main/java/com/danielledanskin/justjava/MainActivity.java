@@ -77,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
 
     // This method increases the quantity varaible by one
     public void increment(View view) {
-        quantity++;
+        if (quantity <= 100) {
+            quantity++;
+        }
         displayQuantity(quantity);
     }
 
