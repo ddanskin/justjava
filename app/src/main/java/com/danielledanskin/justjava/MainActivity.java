@@ -13,6 +13,7 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
     int quantity = 0;
+    boolean hasWhippedCream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +27,17 @@ public class MainActivity extends AppCompatActivity {
      * @param quantity is the number of cups of coffee ordered
      */
     private int calculatePrice() {
+        if(hasWhippedCream == true){
+            return quantity * 6;
+        }
         return quantity * 5;
     }
 
     // This method is called when the order button is clicked.
     public void submitOrder(View view) {
-        int price = calculatePrice();
         CheckBox whippedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
-        boolean hasWhippedCream = whippedCreamCheckbox.isChecked();
+        hasWhippedCream = whippedCreamCheckbox.isChecked();
+        int price = calculatePrice();
         String orderSummaryMessage = createOrderSummary(price, hasWhippedCream);
         displayMessage(orderSummaryMessage);
     }
