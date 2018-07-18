@@ -3,6 +3,7 @@ package com.danielledanskin.justjava;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -31,14 +32,17 @@ public class MainActivity extends AppCompatActivity {
     // This method is called when the order button is clicked.
     public void submitOrder(View view) {
         int price = calculatePrice();
-        String orderSummaryMessage = createOrderSummary(price);
+        CheckBox whippedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+        boolean hasWhippedCream = whippedCreamCheckbox.isChecked();
+        String orderSummaryMessage = createOrderSummary(price, hasWhippedCream);
         displayMessage(orderSummaryMessage);
     }
 
     // This method creates the order summary as a string and returns it
-    private String createOrderSummary(int price) {
+    private String createOrderSummary(int price, boolean hasWhippedCream) {
         String orderSummary = "Name: Bob Belcher";
         orderSummary += "\nQuantity: " + quantity;
+        orderSummary += "\nAdd Whipped Cream? " + hasWhippedCream;
         orderSummary += "\nTotal = $" + price;
         orderSummary += "\nThank you!";
         return orderSummary;
