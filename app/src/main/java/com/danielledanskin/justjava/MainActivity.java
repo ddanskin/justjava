@@ -14,6 +14,7 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
     int quantity = 0;
     boolean hasWhippedCream;
+    boolean hasChocolate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,29 +28,43 @@ public class MainActivity extends AppCompatActivity {
      * @param quantity is the number of cups of coffee ordered
      */
     private int calculatePrice() {
-        if(hasWhippedCream == true){
-            return quantity * 6;
+        int price = 5;
+
+        if (hasWhippedCream) {
+            price++;
         }
-        return quantity * 5;
+        if (hasChocolate) {
+            price++;
+        }
+
+        return quantity * price;
     }
 
     // This method is called when the order button is clicked.
     public void submitOrder(View view) {
-        CheckBox whippedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
-        hasWhippedCream = whippedCreamCheckbox.isChecked();
+        updateToppings();
         int price = calculatePrice();
-        String orderSummaryMessage = createOrderSummary(price, hasWhippedCream);
+        String orderSummaryMessage = createOrderSummary(price);
         displayMessage(orderSummaryMessage);
     }
 
     // This method creates the order summary as a string and returns it
-    private String createOrderSummary(int price, boolean hasWhippedCream) {
+    private String createOrderSummary(int price) {
         String orderSummary = "Name: Bob Belcher";
         orderSummary += "\nQuantity: " + quantity;
         orderSummary += "\nAdd Whipped Cream? " + hasWhippedCream;
+        orderSummary += "\nAdd Chocolate? " + hasChocolate;
         orderSummary += "\nTotal = $" + price;
         orderSummary += "\nThank you!";
         return orderSummary;
+    }
+
+    // This method updates the topping variables based on checkbox states
+    private void updateToppings() {
+        CheckBox whippedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+        hasWhippedCream = whippedCreamCheckbox.isChecked();
+        CheckBox chocolateCheckbox = (CheckBox) findViewById(R.id.chocolate_checkbox);
+        hasChocolate = chocolateCheckbox.isChecked();
     }
 
     // This method displays the given quantity value on the screen.
