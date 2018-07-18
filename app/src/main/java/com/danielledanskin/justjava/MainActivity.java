@@ -73,11 +73,13 @@ public class MainActivity extends AppCompatActivity {
         quantityTextView.setText("" + count);
     }
 
+    // This method increases the quantity varaible by one
     public void increment(View view) {
         quantity++;
         displayQuantity(quantity);
     }
 
+    // This method decrements the quantity variable by one
     public void decrement(View view) {
         if (quantity > 0) {
             quantity--;
@@ -85,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         displayQuantity(quantity);
     }
 
+    // This method displays the order summary to the order summary text view
     private void displayMessage(String message) {
         TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
