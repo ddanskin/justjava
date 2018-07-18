@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -50,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
     // This method creates the order summary as a string and returns it
     private String createOrderSummary(int price) {
-        String orderSummary = "Name: Bob Belcher";
+        EditText userName = (EditText) findViewById(R.id.name_input);
+        String orderSummary = "Name: " + userName.getText();
         orderSummary += "\nQuantity: " + quantity;
         orderSummary += "\nAdd Whipped Cream? " + hasWhippedCream;
         orderSummary += "\nAdd Chocolate? " + hasChocolate;
