@@ -1,14 +1,19 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Just Java</string>
     <string name="whipped_cream">Whipped Cream</string>
+    <string name="add_whipped_cream">Add Whipped Cream? </string>
     <string name="chocolate">Chocolate</string>
+    <string name="add_chocolate">Add Chocolate? </string>
     <string name="hint_name">Name</string>
-    <string name="toppings_title">Toppings (+$1 each)</string>
-    <string name="quantity_title">Quantity</string>
+    <string name="toppings">Toppings (+$1 each)</string>
+    <string name="quantity">Quantity</string>
     <string name="increase">+</string>
     <string name="decrease">-</string>
     <string name="zero">0</string>
-    <string name="order_summary_title">Order Summary</string>
     <string name="order">Order</string>
+    <string name="thank_you">Thank you!</string>
+    <string name="total">Total = $</string>
+    <string name="order_summary_name">Name: <xliff:g id="name" example="Amy">%s</xliff:g></string>
+    <string name="email_subject">Just Java order for <xliff:g id="name" example="Amy">%s</xliff:g></string>
 </resources>
 

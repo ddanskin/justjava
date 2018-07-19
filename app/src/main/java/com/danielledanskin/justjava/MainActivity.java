@@ -58,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
         updateToppings();
         int price = calculatePrice();
         String orderSummaryMessage = createOrderSummary(price);
-        displayMessage(Integer.toString(price));
-        String emailSubject = "Just Java order for " + username;
+        String emailSubject = getString(R.string.email_subject, username);
         composeOrderEmail(emailSubject, orderSummaryMessage );
     }
 
@@ -67,12 +66,12 @@ public class MainActivity extends AppCompatActivity {
     private String createOrderSummary(int price) {
         EditText usernameInput = (EditText) findViewById(R.id.name_input);
         username = usernameInput.getText().toString();
-        String orderSummary = "Name: " + username;
-        orderSummary += "\nQuantity: " + quantity;
-        orderSummary += "\nAdd Whipped Cream? " + hasWhippedCream;
-        orderSummary += "\nAdd Chocolate? " + hasChocolate;
-        orderSummary += "\nTotal = $" + price;
-        orderSummary += "\nThank you!";
+        String orderSummary = getString(R.string.order_summary_name, username);
+        orderSummary += "\n" + getString(R.string.quantity) + ": " + quantity;
+        orderSummary += "\n" + getString(R.string.add_whipped_cream) + hasWhippedCream;
+        orderSummary += "\n" + getString(R.string.add_chocolate) + hasChocolate;
+        orderSummary += "\n" + getString(R.string.total) + price;
+        orderSummary += "\n" + getString(R.string.thank_you);
         return orderSummary;
     }
 
@@ -86,8 +85,9 @@ public class MainActivity extends AppCompatActivity {
 
     // This method displays the given quantity value on the screen.
     private void displayQuantity(int count) {
+        String totalCount = "" + count;
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + count);
+        quantityTextView.setText(totalCount);
     }
 
     // This method increases the quantity varaible by one
@@ -104,11 +104,5 @@ public class MainActivity extends AppCompatActivity {
             quantity--;
         }
         displayQuantity(quantity);
-    }
-
-    // This method displays the order summary to the order summary text view
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
     }
 }
