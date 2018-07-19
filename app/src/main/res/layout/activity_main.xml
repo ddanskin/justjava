@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fefefa"
     tools:context=".MainActivity">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -95,7 +96,10 @@
 
         <Button
             android:id="@+id/order_button"
-            style="@style/HeaderTextStyle"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="#ffffff"
             android:layout_marginTop="16dp"
             android:onClick="submitOrder"
             android:text="@string/order" />
