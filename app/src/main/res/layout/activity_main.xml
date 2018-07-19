@@ -19,11 +19,9 @@
             android:hint="@string/hint_name"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/HeaderTextStyle"
             android:layout_marginBottom="16dp"
-            android:text="@string/toppings"
-            android:textAllCaps="true" />
+            android:text="@string/toppings" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,11 +63,9 @@
         </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/HeaderTextStyle"
             android:layout_marginBottom="16dp"
-            android:text="@string/quantity"
-            android:textAllCaps="true" />
+            android:text="@string/quantity" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,10 +73,7 @@
 
             <Button
                 android:id="@+id/increment_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                style="@style/CounterButtonStyle"
                 android:onClick="increment"
                 android:text="@string/increase" />
 
@@ -94,10 +87,7 @@
 
             <Button
                 android:id="@+id/decrement_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
+                style="@style/CounterButtonStyle"
                 android:onClick="decrement"
                 android:text="@string/decrease" />
 
@@ -105,12 +95,10 @@
 
         <Button
             android:id="@+id/order_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/HeaderTextStyle"
             android:layout_marginTop="16dp"
             android:onClick="submitOrder"
-            android:text="@string/order"
-            android:textAllCaps="true" />
+            android:text="@string/order" />
 
     </LinearLayout>
 </ScrollView>
