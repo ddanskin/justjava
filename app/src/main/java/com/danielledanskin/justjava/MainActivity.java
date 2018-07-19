@@ -1,5 +1,7 @@
 package com.danielledanskin.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,7 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
     int quantity = 0;
+    String username;
     boolean hasWhippedCream;
     boolean hasChocolate;
 
@@ -41,18 +44,30 @@ public class MainActivity extends AppCompatActivity {
         return quantity * price;
     }
 
+    public void composeOrderEmail(String subject, String body) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, body);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
     // This method is called when the order button is clicked.
     public void submitOrder(View view) {
         updateToppings();
         int price = calculatePrice();
         String orderSummaryMessage = createOrderSummary(price);
-        displayMessage(orderSummaryMessage);
+        displayMessage(Integer.toString(price));
+        String emailSubject = "Just Java order for " + username;
+        composeOrderEmail(emailSubject, orderSummaryMessage );
     }
 
     // This method creates the order summary as a string and returns it
     private String createOrderSummary(int price) {
-        EditText userName = (EditText) findViewById(R.id.name_input);
-        String orderSummary = "Name: " + userName.getText();
+        EditText usernameInput = (EditText) findViewById(R.id.name_input);
+        username = usernameInput.getText().toString();
+        String orderSummary = "Name: " + username;
         orderSummary += "\nQuantity: " + quantity;
         orderSummary += "\nAdd Whipped Cream? " + hasWhippedCream;
         orderSummary += "\nAdd Chocolate? " + hasChocolate;
